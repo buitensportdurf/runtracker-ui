@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@ember/optional-features": "^1.3.0",
+    "@feedbackfruits/styles": "github:feedbackfruits/feedbackfruits-ui-styles#2.0",
     "@glimmer/component": "^1.0.0",
     "@glimmer/tracking": "^1.0.0",
     "babel-eslint": "^10.1.0",
