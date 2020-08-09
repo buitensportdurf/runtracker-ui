@@ -1,10 +1,10 @@
 {
   "name": "runtracker-ui",
   "version": "0.0.0",
-  "private": true,
-  "description": "Small description for runtracker-ui goes here",
-  "repository": "",
-  "license": "MIT",
+  "private": false,
+  "description": "Survivalrun tracker frontend",
+  "repository": "https://github.com/buitensportdurf/runtracker-ui",
+  "license": "GNU GLP v3.0",
   "author": "",
   "directories": {
     "doc": "doc",
