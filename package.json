@@ -4,7 +4,7 @@
   "private": false,
   "description": "Survivalrun tracker frontend",
   "repository": "https://github.com/buitensportdurf/runtracker-ui",
-  "license": "GNU GLP v3.0",
+  "license": "GPL-3.0-or-later",
   "author": "",
   "directories": {
     "doc": "doc",
