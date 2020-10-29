@@ -1121,6 +1121,18 @@
   resolved "https://registry.yarnpkg.com/@ember/edition-utils/-/edition-utils-1.2.0.tgz#a039f542dc14c8e8299c81cd5abba95e2459cfa6"
   integrity sha512-VmVq/8saCaPdesQmftPqbFtxJWrzxNGSQ+e8x8LLe3Hjm36pJ04Q8LeORGZkAeOhldoUX9seLGmSaHeXkIqoog==
 
+"@ember/jquery@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@ember/jquery/-/jquery-1.1.0.tgz#33d062610a5ceaa5c5c8a3187f870d47d6595940"
+  integrity sha512-zePT3LiK4/2bS4xafrbOlwoLJrDFseOZ95OOuVDyswv8RjFL+9lar+uxX6+jxRb0w900BcQSWP/4nuFSK6HXXw==
+  dependencies:
+    broccoli-funnel "^2.0.2"
+    broccoli-merge-trees "^3.0.2"
+    ember-cli-babel "^7.11.1"
+    ember-cli-version-checker "^3.1.3"
+    jquery "^3.4.1"
+    resolve "^1.11.1"
+
 "@ember/optional-features@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@ember/optional-features/-/optional-features-1.3.0.tgz#d7da860417b85a56cec88419f30da5ee1dde2756"
@@ -1208,9 +1220,9 @@
     resolve "^1.8.1"
     semver "^5.6.0"
 
-"@feedbackfruits/styles@github:feedbackfruits/feedbackfruits-ui-styles#2.0":
-  version "2.0.5"
-  resolved "git+ssh://git@github.com/feedbackfruits/feedbackfruits-ui-styles.git#29e135432177ea175a8e697e11b7670e806bff60"
+"@feedbackfruits/styles@git+ssh://git@git.loken.nl:felix/feedbackfruits-styles.git#feature/mdl-less":
+  version "2.7.0"
+  resolved "git+ssh://git@git.loken.nl:felix/feedbackfruits-styles.git#65aa43257331107cebd302991ff497b0d77b2fd6"
   dependencies:
     "@glimmer/tracking" "^1.0.0"
     bowser "^1.8.0"
@@ -1225,15 +1237,12 @@
     ember-decorators "^6.1.1"
     ember-gestures "^1.1.1"
     ember-intl "^4.1.0"
-    ember-material-lite "^1.0.0"
     ember-sortable "^2.1.0"
     ember-truth-helpers "^2.0.0"
-    jquery-ui "github:jquery/jquery-ui#1.11"
+    jquery-ui "^1.12.0"
     jquery-ui-touch-punch "^0.2.3"
     jquery.easing "^1.4.1"
     material-design-icons "^3.0.1"
-    material-design-lite "~1.1.3"
-    mdl-selectfield "^1.0.4"
     mousetrap "^1.6.1"
     nouislider "^13.1.0"
     roboto-fontface "^0.10.0"
@@ -3130,7 +3139,7 @@ broccoli-funnel-reducer@^1.0.0:
   resolved "https://registry.yarnpkg.com/broccoli-funnel-reducer/-/broccoli-funnel-reducer-1.0.0.tgz#11365b2a785aec9b17972a36df87eef24c5cc0ea"
   integrity sha1-ETZbKnha7JsXlyo234fu8kxcwOo=
 
-broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1:
+broccoli-funnel@^1.0.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-1.2.0.tgz#cddc3afc5ff1685a8023488fff74ce6fb5a51296"
   integrity sha1-zdw6/F/xaFqAI0iP/3TOb7WlEpY=
@@ -3201,7 +3210,7 @@ broccoli-kitchen-sink-helpers@^0.3.1:
     glob "^5.0.10"
     mkdirp "^0.5.1"
 
-broccoli-merge-trees@^1.0.0, broccoli-merge-trees@^1.1.0:
+broccoli-merge-trees@^1.0.0:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/broccoli-merge-trees/-/broccoli-merge-trees-1.2.4.tgz#a001519bb5067f06589d91afa2942445a2d0fdb5"
   integrity sha1-oAFRm7UGfwZYnZGvopQkRaLQ/bU=
@@ -3862,15 +3871,6 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
-  integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
-  dependencies:
-    ansi-styles "^3.2.1"
-    escape-string-regexp "^1.0.5"
-    supports-color "^5.3.0"
-
 chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
@@ -3881,6 +3881,15 @@ chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
     has-ansi "^2.0.0"
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
+
+chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
+  integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
 
 chalk@^3.0.0:
   version "3.0.0"
@@ -3910,6 +3919,21 @@ charm@^1.0.0:
   dependencies:
     inherits "^2.0.1"
 
+"chokidar@>=2.0.0 <4.0.0", chokidar@^3.4.1:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.4.2.tgz#38dc8e658dec3809741eb3ef7bb0a47fe424232d"
+  integrity sha512-IZHaDeBeI+sZJRX7lGcXsdzgvZqKv6sECqsbErJA4mHWfpRrD8B97kSFN4cQz6nGBGiuFia1MKR4d6c1o8Cv7A==
+  dependencies:
+    anymatch "~3.1.1"
+    braces "~3.0.2"
+    glob-parent "~5.1.0"
+    is-binary-path "~2.1.0"
+    is-glob "~4.0.1"
+    normalize-path "~3.0.0"
+    readdirp "~3.4.0"
+  optionalDependencies:
+    fsevents "~2.1.2"
+
 chokidar@^2.1.8:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.1.8.tgz#804b3a7b6a99358c3c5c61e71d8728f041cff917"
@@ -3928,21 +3952,6 @@ chokidar@^2.1.8:
     upath "^1.1.1"
   optionalDependencies:
     fsevents "^1.2.7"
-
-chokidar@^3.4.1:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.4.2.tgz#38dc8e658dec3809741eb3ef7bb0a47fe424232d"
-  integrity sha512-IZHaDeBeI+sZJRX7lGcXsdzgvZqKv6sECqsbErJA4mHWfpRrD8B97kSFN4cQz6nGBGiuFia1MKR4d6c1o8Cv7A==
-  dependencies:
-    anymatch "~3.1.1"
-    braces "~3.0.2"
-    glob-parent "~5.1.0"
-    is-binary-path "~2.1.0"
-    is-glob "~4.0.1"
-    normalize-path "~3.0.0"
-    readdirp "~3.4.0"
-  optionalDependencies:
-    fsevents "~2.1.2"
 
 chownr@^1.1.1:
   version "1.1.4"
@@ -5193,13 +5202,13 @@ ember-cli-preprocess-registry@^3.3.0:
     debug "^3.0.1"
     process-relative-require "^1.0.0"
 
-ember-cli-sass@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/ember-cli-sass/-/ember-cli-sass-8.0.1.tgz#22730bb8eee1eedc6ddd0cf2e51f5405a09b9139"
-  integrity sha512-sJQiBJo51tReuJmDLHkJ/zIbqSslEjJB2zRPH+6bbhzfznzUfhCLXHthpHCS3SqnVq2rnzZQ8ifdmAX7mRWJ7w==
+ember-cli-sass@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/ember-cli-sass/-/ember-cli-sass-10.0.1.tgz#afa91eb7dfe3890be0390639d66976512e7d8edc"
+  integrity sha512-dWVoX03O2Mot1dEB1AN3ofC8DDZb6iU4Kfkbr3WYi9S9bGVHrpR/ngsR7tuVBuTugTyG53FPtLLqYdqx7XjXdA==
   dependencies:
-    broccoli-funnel "^1.0.0"
-    broccoli-merge-trees "^1.1.0"
+    broccoli-funnel "^2.0.1"
+    broccoli-merge-trees "^3.0.1"
     broccoli-sass-source-maps "^4.0.0"
     ember-cli-version-checker "^2.1.0"
 
@@ -5570,21 +5579,6 @@ ember-load-initializers@^2.1.1:
   dependencies:
     ember-cli-babel "^7.11.0"
     ember-cli-typescript "^2.0.2"
-
-ember-material-lite@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ember-material-lite/-/ember-material-lite-1.0.1.tgz#50b17753984c65d5bf1d170675b0a7715c56cbf5"
-  integrity sha512-RB0PIgfYCT3AhGmEEVupEznpKQKW6Jz5GN2lAB04yv4VLA7q24QMjbzMKSNJobjbt8E3No3aagZpjNjr24JveA==
-  dependencies:
-    broccoli-funnel "^2.0.1"
-    broccoli-merge-trees "^3.0.1"
-    chalk "2.4.2"
-    ember-cli-babel "^7.1.3"
-    ember-cli-htmlbars "^3.0.1"
-    ember-cli-sass "^8.0.1"
-    material-design-lite "~1.0.6"
-    node-sass "^4.9.4"
-    rsvp "^4.8.4"
 
 ember-maybe-import-regenerator@^0.1.6:
   version "0.1.6"
@@ -8027,9 +8021,10 @@ jquery-ui-touch-punch@^0.2.3:
   resolved "https://registry.yarnpkg.com/jquery-ui-touch-punch/-/jquery-ui-touch-punch-0.2.3.tgz#eed82242733ba243f46b3e87c1841b308191da68"
   integrity sha1-7tgiQnM7okP0az6HwYQbMIGR2mg=
 
-"jquery-ui@github:jquery/jquery-ui#1.11":
-  version "1.11.4"
-  resolved "https://codeload.github.com/jquery/jquery-ui/tar.gz/d6713024e16de90ea71dc0544ba34e1df01b4d8a"
+jquery-ui@^1.12.0:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"
+  integrity sha1-vLQEXI3QU5wTS8FIjN0+dop6nlE=
 
 jquery.easing@^1.4.1:
   version "1.4.1"
@@ -8877,21 +8872,6 @@ material-design-icons@^3.0.1:
   resolved "https://registry.yarnpkg.com/material-design-icons/-/material-design-icons-3.0.1.tgz#9a71c48747218ebca51e51a66da682038cdcb7bf"
   integrity sha1-mnHEh0chjrylHlGmbaaCA4zct78=
 
-material-design-lite@^1.1.3:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/material-design-lite/-/material-design-lite-1.3.0.tgz#d004ce3fee99a1eeb74a78b8a325134a5f1171d3"
-  integrity sha1-0ATOP+6Zoe63Sni4oyUTSl8RcdM=
-
-material-design-lite@~1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/material-design-lite/-/material-design-lite-1.0.6.tgz#dac5dfa6a7cfcb5ca399c35e85b7d5ea8834c282"
-  integrity sha1-2sXfpqfPy1yjmcNehbfV6og0woI=
-
-material-design-lite@~1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/material-design-lite/-/material-design-lite-1.1.3.tgz#b9ba3dfc858bfee1d599f39e641fa78bd83f4ea0"
-  integrity sha1-ubo9/IWL/uHVmfOeZB+ni9g/TqA=
-
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -8900,13 +8880,6 @@ md5.js@^1.3.4:
     hash-base "^3.0.0"
     inherits "^2.0.1"
     safe-buffer "^5.1.2"
-
-mdl-selectfield@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/mdl-selectfield/-/mdl-selectfield-1.0.4.tgz#7d05cdd33e9b5be4a5c4d0d322558041b8529ac9"
-  integrity sha1-fQXN0z6bW+SlxNDTIlWAQbhSmsk=
-  dependencies:
-    material-design-lite "^1.1.3"
 
 mdn-data@2.0.4:
   version "2.0.4"
@@ -9397,7 +9370,7 @@ node-releases@^1.1.60:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.60.tgz#6948bdfce8286f0b5d0e5a88e8384e954dfe7084"
   integrity sha512-gsO4vjEdQaTusZAEebUWp2a5d7dF5DYoIpDG7WySnk7BuZDW+GPpHXoXXuYawRBr/9t5q54tirPz79kFIWg4dA==
 
-node-sass@^4.5.0, node-sass@^4.9.4:
+node-sass@^4.5.0:
   version "4.14.1"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.14.1.tgz#99c87ec2efb7047ed638fb4c9db7f3a42e2217b5"
   integrity sha512-sjCuOlvGyCJS40R8BscF5vhVlQjNN069NtQ1gSxyK1u9iqvn6tf7O1R4GNowVZfiZUCRt5MmMs1xd+4V/7Yr0g==
@@ -11013,6 +10986,13 @@ sass-graph@2.2.5:
     lodash "^4.0.0"
     scss-tokenizer "^0.2.3"
     yargs "^13.3.2"
+
+sass@^1.26.10:
+  version "1.26.10"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.26.10.tgz#851d126021cdc93decbf201d1eca2a20ee434760"
+  integrity sha512-bzN0uvmzfsTvjz0qwccN1sPm2HxxpNI/Xa+7PlUEMS+nQvbyuEK7Y0qFqxlPHhiNHb1Ze8WQJtU31olMObkAMw==
+  dependencies:
+    chokidar ">=2.0.0 <4.0.0"
 
 sax@0.5.x:
   version "0.5.8"
