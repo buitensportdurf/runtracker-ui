@@ -22,7 +22,7 @@ module.exports = function(deployTarget) {
     ENV['scp'] = {
       nodes: [{
         username: 'www-data',
-        host: 'loken.nl',
+        host: 'survivalruns.nl',
         path: '/var/www/survivalruns.nl/',
       }],
       // displayCommands: true,
