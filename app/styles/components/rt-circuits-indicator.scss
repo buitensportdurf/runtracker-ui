@@ -1,0 +1,11 @@
+.rt-circuits-indicator {
+  @include fbf-layout--flow-right;
+
+  .fbf-chip {
+    white-space: nowrap;
+  }
+
+  .fbf-chip + .fbf-chip {
+    margin-left: 8px;
+  }
+}

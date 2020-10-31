@@ -1,0 +1,13 @@
+<div class="fbf-layout__center-column fbf-layout__center-column--margin-vertical">
+  <div class="fbf-card--base border-radius-sm content-padding-lg">
+    <h1 class="text--h2 text--thin">
+      Runs overview
+    </h1>
+    <div class="fbf-layout--flow-right">
+      <FbfIcon>search</FbfIcon>
+      <FbfTextField @label="Search" @isCompact={{true}} @value={{this.filter}} @key-down={{this.filterKeypress}}/>
+    </div>
+    {{outlet}}
+    <RunsList @model={{this.filteredRuns}} class="Test" />
+  </div>
+</div>

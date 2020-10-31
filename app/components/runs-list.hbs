@@ -1,0 +1,46 @@
+<FbfDataTable
+  @hasFixedLeftColumns={{true}}
+  @fixedLeftWidth={{3}}
+  @rowHeight="medium"
+  class="rt-run-list"
+  as |components|
+>
+  <components.body>
+    <FbfDataTableRow>
+      <FbfDataTableHeader @isFixedLeft={{true}}>
+        City
+      </FbfDataTableHeader>
+      <FbfDataTableHeader>
+        Date
+      </FbfDataTableHeader>
+      <FbfDataTableHeader>
+        Competitions
+      </FbfDataTableHeader>
+      <FbfDataTableHeader>
+        Distances
+      </FbfDataTableHeader>
+      <FbfDataTableHeader @minWidth={{250}}>
+        Organizer
+      </FbfDataTableHeader>
+    </FbfDataTableRow>
+    {{#each @model as |run|}}
+      <FbfDataTableRow>
+        <FbfDataTableCell @isFixedLeft={{true}}>
+          <p class="text--h6">{{run.cityCapitalized}}</p>
+        </FbfDataTableCell>
+        <FbfDataTableCell>
+          <p class="text--muted" title={{run.date}}>{{run.dateCompact}}</p>
+        </FbfDataTableCell>
+        <FbfDataTableCell>
+          <CompetitionsIndicator @circuits={{run.circuitsMap}} />
+        </FbfDataTableCell>
+        <FbfDataTableCell>
+          <CircuitsIndicator @circuits={{run.distances}} />
+        </FbfDataTableCell>
+        <FbfDataTableCell>
+          <a href={{run.organization.website}} class="text--link">{{run.organization.name}}</a>
+        </FbfDataTableCell>
+      </FbfDataTableRow>
+    {{/each}}
+  </components.body>
+</FbfDataTable>

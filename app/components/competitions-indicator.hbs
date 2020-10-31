@@ -1,0 +1,31 @@
+<div class="rt-competitions-indicator">
+  <FbfBadge @color="blue" class={{if @circuits.youth 'is-active' 'is-inactive'}} id={{this.youthCircuitTooltipId}}>Y</FbfBadge>
+  <FbfBadge @color="green" class={{if @circuits.short 'is-active' 'is-inactive'}} id={{this.shortCircuitTooltipId}}>S</FbfBadge>
+  <FbfBadge @color="orange" class={{if @circuits.medium 'is-active' 'is-inactive'}} id={{this.mediumCircuitTooltipId}}>M</FbfBadge>
+  <FbfBadge @color="red" class={{if @circuits.long 'is-active' 'is-inactive'}} id={{this.longCircuitTooltipId}}>L</FbfBadge>
+
+  <FbfTooltip @for={{this.youthCircuitTooltipId}} class="fbf-layout--flow-down">
+    <span>Youth survival run</span>
+    {{#unless @circuits.youth}}
+      <span class="text--muted">(not available)</span>
+    {{/unless}}
+  </FbfTooltip>
+  <FbfTooltip @for={{this.shortCircuitTooltipId}} class="fbf-layout--flow-down">
+    <span>Short survival run</span>
+    {{#unless @circuits.short}}
+      <span class="text--muted">(not available)</span>
+    {{/unless}}
+  </FbfTooltip>
+  <FbfTooltip @for={{this.mediumCircuitTooltipId}} class="fbf-layout--flow-down">
+    <span>Medium-length survival run</span>
+    {{#unless @circuits.medium}}
+      <span class="text--muted">(not available)</span>
+    {{/unless}}
+  </FbfTooltip>
+  <FbfTooltip @for={{this.longCircuitTooltipId}} class="fbf-layout--flow-down">
+    <span>Long survival run</span>
+    {{#unless @circuits.long}}
+      <span class="text--muted">(not available)</span>
+    {{/unless}}
+  </FbfTooltip>
+</div>

@@ -1,0 +1,13 @@
+.rt-competitions-indicator {
+  @include fbf-layout--flow-right;
+
+  .fbf-badge + .fbf-badge {
+    margin-left: 4px;
+  }
+
+  .fbf-badge.is-inactive {
+    @include text--muted-more;
+    border: 1px $color-palette-grey-300 solid;
+    background-color: transparent;
+  }
+}

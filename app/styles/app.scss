@@ -1,8 +1,9 @@
 // Import from feedbackfruits-styles package
 @import 'feedbackfruits-components';
 @import 'feedbackfruits-platform';
+@import 'components';
 
-.rt-home {
+.rt-cover-background {
   background-image: url('/images/background.jpg');
   background-size: cover;
 }
