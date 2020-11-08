@@ -1,0 +1,27 @@
+<FbfDataTableRow>
+  <FbfDataTableCell @isFixedLeft={{true}}>
+    <p class="text--h6">{{@model.cityCapitalized}}</p>
+  </FbfDataTableCell>
+  <FbfDataTableCell>
+    <p class="text--muted" title={{@model.date}}>{{@model.dateCompact}}</p>
+  </FbfDataTableCell>
+  <FbfDataTableCell>
+    {{#if @model.address}}
+      <a href={{@model.googleMapsURI}} class="text--linkbutton" title={{@model.address}}>
+        {{#if @model.travelTimeHours}}
+          <span class="text--strong">{{@model.travelTimeHours}}</span>hr
+        {{/if}}
+        <span class="text--strong">{{@model.travelTimeMinutes}}</span>mins
+      </a>
+    {{/if}}
+  </FbfDataTableCell>
+  <FbfDataTableCell>
+    <CompetitionsIndicator @circuits={{@model.circuitsMap}} />
+  </FbfDataTableCell>
+  <FbfDataTableCell>
+    <CircuitsIndicator @circuits={{@model.distances}} />
+  </FbfDataTableCell>
+  <FbfDataTableCell>
+    <a href={{@model.organization.website}} class="text--link">{{@model.organization.name}}</a>
+  </FbfDataTableCell>
+</FbfDataTableRow>

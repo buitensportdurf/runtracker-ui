@@ -63,5 +63,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.8.0"
   }
 }

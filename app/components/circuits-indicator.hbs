@@ -4,4 +4,9 @@
       <p>{{distance}} km</p>
     </FbfChip>
   {{/each}}
+  {{#if this.hasCircuitsOverlow}}
+    <FbfChip>
+      <p>+3</p>
+    </FbfChip>
+  {{/if}}
 </div>
