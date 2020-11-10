@@ -1,0 +1,37 @@
+{{#if @isVisible}}
+  <div class="rt-settings-panel margin-y-xl">
+    <div class="fbf-layout--flow-right">
+      <div class="fbf-layout--flow-down content-padding-sm margin-right-xl">
+        <p class="text--h6">Show columns</p>
+        <FbfCheckbox @value={{@showCompetitions}} @isDisabled={{true}}>
+          Competitions
+        </FbfCheckbox>
+        <FbfCheckbox @value={{not @showTravelTime}} {{on "click" (fn @toggleSetting "showTravelTime")}}>
+          Travel time
+        </FbfCheckbox>
+      </div>
+      <div class="fbf-layout--flow-down content-padding-sm margin-right-xl">
+        <p class="text--h6">Travel time (beta)</p>
+        <FbfTextField @label="Your location" @value="Delft" @disabled={{true}}/>
+        <p class="text--muted margin-top-md">Calculate time based on ...</p>
+        <FbfRadio @value="car" @selectedValue="car" @isDisabled={{true}}>
+          Car
+        </FbfRadio>
+        <FbfRadio @value="transit" @selectedValue="car" @isDisabled={{true}}>
+          Public transport
+        </FbfRadio>
+      </div>
+      <div class="fbf-list-item bg-grey--50 bg-gradient-notice border-radius-sm">
+        <FbfIcon @color="blue">
+          info_outlined
+        </FbfIcon>
+        <div class="fbf-list-item__lines">
+          <p>Travel time is in beta for Delft. Want to use it for your location? <a href="https://matrix.to/#/+runtracker:matrix.org">Let us know in the chat</a>!</p>
+        </div>
+      </div>
+    </div>
+    <div class="fbf-layout--flow-right">
+      <FbfButton {{on "click" @onClose}} @type="raised">Close</FbfButton>
+    </div>
+  </div>
+{{/if}}

@@ -5,13 +5,18 @@ import { tracked } from '@glimmer/tracking';
 export default class CircuitsIndicator extends Component {
   @tracked isCircuitsExpanded = false;
 
-  @computed('circuits.[]', 'isCircuitsExpanded')
+  @computed('args.circuits.[]', 'isCircuitsExpanded')
   get hasCircuitsOverlow() {
-    return !this.isCircuitsExpanded && this.circuits?.length > 3;
+    return !this.isCircuitsExpanded && this.args.circuits.length > 4;
+  }
+
+  @computed('args.circuits.[]', 'isCircuitsExpanded')
+  get circuitsOverflowLength() {
+    return this.args.circuits.length - 4;
   }
 
   @action
   toggleDistancesExpanded() {
-    this.toggleProperty('isDistancesExpanded');
+    this.isCircuitsExpanded = !this.isCircuitsExpanded;
   }
 }

@@ -1,13 +1,27 @@
-<div class="fbf-layout__center-column fbf-layout__center-column--margin-vertical">
+<div class="fbf-layout__center-column fbf-layout__center-column--huge-width fbf-layout__center-column--margin-vertical">
   <div class="fbf-card--base border-radius-sm content-padding-lg">
     <h1 class="text--h2 text--thin">
       Runs overview
     </h1>
     <div class="fbf-layout--flow-right">
       <FbfIcon>search</FbfIcon>
-      <FbfTextField @label="Search" @isCompact={{true}} @value={{this.filter}} @key-down={{this.filterKeypress}}/>
+      <FbfTextField @label="Search" @isCompact={{true}} @value={{this.filter}} @key-down={{this.filterKeypress}} class="margin-right-md"/>
+      <FbfButton @color="grey" {{on "click" this.toggleSettingsPanel}}>
+        <FbfIcon>settings</FbfIcon>
+        settings
+      </FbfButton>
     </div>
-    {{outlet}}
-    <RunsList @model={{this.filteredRuns}} class="Test" />
+    <SettingsPanel
+      @isVisible={{this.isSettingsPanelExpanded}}
+      @onClose={{this.toggleSettingsPanel}}
+      @showCompetitions={{this.showCompetitions}}
+      @showTraveltime={{this.showTravelTime}}
+      @toggleSetting={{this.toggleSetting}}
+    />
+    <RunsList
+      @model={{this.filteredRuns}}
+      @showCompetitions={{this.showCompetitions}}
+      @showTravelTime={{this.showTravelTime}}
+    />
   </div>
 </div>

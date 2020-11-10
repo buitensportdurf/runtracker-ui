@@ -13,9 +13,31 @@
       <FbfDataTableHeader>
         Date
       </FbfDataTableHeader>
-      <FbfDataTableHeader>
-        Travel time
-      </FbfDataTableHeader>
+      {{#if @showTravelTime}}
+        <FbfDataTableHeader>
+          <span class="fbf-layout--flow-right">Travel time
+            <div class="fbf-popover__container">
+              <FbfButton @icon="info_outlined"
+                {{on "click" this.toggleTravelTimePopover}}
+              />
+              {{#if this.isTravelTimePopoverVisible}}
+                <FbfPopover
+                  @arrow="top"
+                  @alignment="center"
+                  @dismiss={{this.toggleTravelTimePopover}}
+                  class="min-block-width-5"
+                >
+                  <p>
+                    <span class="text--unmuted">Travel time is in beta, based on Delft
+                    as home point (fixed, for now). Want to use your location?</span>
+                    <a href="https://matrix.to/#/+runtracker:matrix.org">Let us know in the chat</a>!
+                  </p>
+                </FbfPopover>
+              {{/if}}
+            </div>
+          </span>
+        </FbfDataTableHeader>
+      {{/if}}
       <FbfDataTableHeader>
         Competitions
       </FbfDataTableHeader>
@@ -27,7 +49,7 @@
       </FbfDataTableHeader>
     </FbfDataTableRow>
     {{#each @model as |run|}}
-      <RunsListItem @model={{run}}/>
+      <RunsListItem @model={{run}} @showTravelTime={{@showTravelTime}}/>
     {{/each}}
   </components.body>
 </FbfDataTable>
