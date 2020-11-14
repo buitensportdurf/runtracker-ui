@@ -2,17 +2,21 @@ import Component from '@glimmer/component';
 import { action, computed } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
+const OVERFLOW_THRESHOLD = 4;
+
 export default class CircuitsIndicator extends Component {
+  overflowThreshold = OVERFLOW_THRESHOLD;
+
   @tracked isCircuitsExpanded = false;
 
-  @computed('args.circuits.[]', 'isCircuitsExpanded')
+  @computed('args.model.distances.[]', 'isCircuitsExpanded')
   get hasCircuitsOverlow() {
-    return !this.isCircuitsExpanded && this.args.circuits.length > 4;
+    return !this.isCircuitsExpanded && this.args.model.distances > OVERFLOW_THRESHOLD;
   }
 
-  @computed('args.circuits.[]', 'isCircuitsExpanded')
+  @computed('args.model.distances.[]', 'isCircuitsExpanded')
   get circuitsOverflowLength() {
-    return this.args.circuits.length - 4;
+    return this.args.model.distances - OVERFLOW_THRESHOLD;
   }
 
   @action

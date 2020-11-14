@@ -10,46 +10,45 @@
       <FbfDataTableHeader @isFixedLeft={{true}}>
         City
       </FbfDataTableHeader>
-      <FbfDataTableHeader>
+      <FbfDataTableHeader @isNumeric={{true}}>
         Date
       </FbfDataTableHeader>
       {{#if @showTravelTime}}
         <FbfDataTableHeader>
-          <span class="fbf-layout--flow-right">Travel time
-            <div class="fbf-popover__container">
-              <FbfButton @icon="info_outlined"
-                {{on "click" this.toggleTravelTimePopover}}
-              />
-              {{#if this.isTravelTimePopoverVisible}}
-                <FbfPopover
-                  @arrow="top"
-                  @alignment="center"
-                  @dismiss={{this.toggleTravelTimePopover}}
-                  class="min-block-width-5"
-                >
-                  <p>
-                    <span class="text--unmuted">Travel time is in beta, based on Delft
-                    as home point (fixed, for now). Want to use your location?</span>
-                    <a href="https://matrix.to/#/+runtracker:matrix.org">Let us know in the chat</a>!
-                  </p>
-                </FbfPopover>
-              {{/if}}
-            </div>
+          <span class="fbf-layout--flow-right">
+            Travel time
+            <TraveltimeBetaNotice/>
           </span>
         </FbfDataTableHeader>
       {{/if}}
-      <FbfDataTableHeader>
-        Competitions
-      </FbfDataTableHeader>
+      {{#if @showMinAge}}
+        <FbfDataTableHeader @isNumeric={{true}}>
+          Minimum age
+        </FbfDataTableHeader>
+      {{/if}}
+      {{#if @showCompetitions}}
+        <FbfDataTableHeader>
+          Competitions
+        </FbfDataTableHeader>
+      {{/if}}
       <FbfDataTableHeader>
         Distances
+      </FbfDataTableHeader>
+      <FbfDataTableHeader @minWidth={{200}}>
+        Status
       </FbfDataTableHeader>
       <FbfDataTableHeader @minWidth={{250}}>
         Organizer
       </FbfDataTableHeader>
     </FbfDataTableRow>
     {{#each @model as |run|}}
-      <RunsListItem @model={{run}} @showTravelTime={{@showTravelTime}}/>
+      <RunsListItem
+        @model={{run}}
+        @showCompetitions={{@showCompetitions}}
+        @showTravelTime={{@showTravelTime}}
+        @showMinAge={{@showMinAge}}
+        @transportMode={{@transportMode}}
+      />
     {{/each}}
   </components.body>
 </FbfDataTable>

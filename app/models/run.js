@@ -1,14 +1,18 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
+import { readOnly } from '@ember/object/computed';
 import { RUN_ADDRESS_LUT } from '../run-lut';
 
 export default class RunModel extends Model {
   @attr('date') date;
   @attr('string') city;
   @attr('number') age;
-  @attr() distances;
-  @attr() circuits;
+  @attr('number') enrollId;
+  @attr('boolean') cancelled;
+  @hasMany('circuit', { async: false }) circuits;
   @attr() organization;
+
+  @readOnly('age') minAge;
 
   @computed('city')
   get cityCapitalized() {
@@ -20,19 +24,37 @@ export default class RunModel extends Model {
     return `${this.date.getDate()}-${this.date.getMonth()}-${this.date.getFullYear()}`.htmlSafe();
   }
 
-  @computed('organization.id')
-  get address() {
-    return RUN_ADDRESS_LUT[this.organization.id]?.address;
+  @computed('circuits.[]')
+  get distances() {
+    return this.circuits.reduce((collect, circuit) => {
+      if (!collect.includes(circuit.distance)) {
+        collect.push(circuit.distance);
+      }
+      return collect;
+    }, []);
+  }
+
+  @computed('enrollId')
+  get canEnroll() {
+    return this.enrollId > 0;
+  }
+
+  @computed('enrollId')
+  get enrollURI() {
+    return `https://www.uvponline.nl/uvponlineF/inschrijven/${this.enrollId}`;
+  }
+
+  @computed('circuits.[]')
+  get delftUsers() {
+    return this.circuits.reduce((collect, circuit) => {
+      let delftUsers = circuit.users.filterBy('isCityDelft');
+      return collect.concat(delftUsers);
+    }, []);
   }
 
   @computed('organization.id')
-  get travelTimeHours() {
-    let hours = Math.floor( RUN_ADDRESS_LUT[this.organization.id]?.travelTime.car / 60);
-    return hours > 0 ?  hours : null;
-  }
-  @computed('organization.id')
-  get travelTimeMinutes() {
-    return RUN_ADDRESS_LUT[this.organization.id]?.travelTime.car % 60;
+  get address() {
+    return RUN_ADDRESS_LUT[this.organization.id]?.address;
   }
 
   @computed('address')
@@ -42,12 +64,12 @@ export default class RunModel extends Model {
 
   /* eslint-disable ember/require-computed-property-dependencies */
   @computed('circuits.[]')
-  get circuitsMap() {
+  get competitionsMap() {
     return {
-      youth: this.circuits.includes('youth'),
-      short: this.circuits.includes('short'),
-      medium: this.circuits.includes('medium'),
-      long: this.circuits.includes('long')
+      youth: (Math.random() > 0.5),
+      short: (Math.random() > 0.5),
+      medium: (Math.random() > 0.5),
+      long: (Math.random() > 0.5)
     }
   }
 }

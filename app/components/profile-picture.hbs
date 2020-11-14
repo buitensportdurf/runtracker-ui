@@ -1,0 +1,11 @@
+<FbfProfilePicture
+  @showUser={{true}}
+  @colorSeed={{@model.id}}
+  @content={{this.fullName}}
+  @id={{this.tooltipId}}
+/>
+{{#if @hasTooltip}}
+  <FbfTooltip @for={{this.tooltipId}}>
+    {{this.fullName}}
+  </FbfTooltip>
+{{/if}}

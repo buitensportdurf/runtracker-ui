@@ -1,0 +1,19 @@
+<div class="fbf-popover__container">
+  <FbfButton @icon="info_outlined"
+    {{on "click" this.toggleTravelTimePopover}}
+  />
+  {{#if this.isTravelTimePopoverVisible}}
+    <FbfPopover
+      @arrow="top"
+      @alignment="center"
+      @dismiss={{this.toggleTravelTimePopover}}
+      class="min-block-width-5"
+    >
+      <p>
+        <span class="text--unmuted">Travel time (in beta) is based on Delft
+        as home point (fixed, for now). Want to use your location?</span>
+        <a href="https://matrix.to/#/+runtracker:matrix.org">Let us know in the chat</a>!
+      </p>
+    </FbfPopover>
+  {{/if}}
+</div>

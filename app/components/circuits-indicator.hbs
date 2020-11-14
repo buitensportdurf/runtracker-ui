@@ -1,5 +1,5 @@
 <div class="rt-circuits-indicator">
-  {{#each (if this.hasCircuitsOverlow (take 4 @circuits) @circuits) as |distance|}}
+  {{#each (if this.hasCircuitsOverlow (take this.overflowThreshold @model.distances) @model.distances) as |distance|}}
     <FbfChip>
       <p>{{distance}} km</p>
     </FbfChip>

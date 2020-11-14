@@ -3,35 +3,45 @@
     <div class="fbf-layout--flow-right">
       <div class="fbf-layout--flow-down content-padding-sm margin-right-xl">
         <p class="text--h6">Show columns</p>
-        <FbfCheckbox @value={{@showCompetitions}} @isDisabled={{true}}>
+        <FbfCheckbox @value={{true}} @disabled={{true}}>
           Competitions
         </FbfCheckbox>
-        <FbfCheckbox @value={{not @showTravelTime}} {{on "click" (fn @toggleSetting "showTravelTime")}}>
+        <FbfCheckbox @value={{true}} {{on "click" (fn @toggleSetting "showTravelTime")}}>
           Travel time
+        </FbfCheckbox>
+        <FbfCheckbox @value={{true}} {{on "click" (fn @toggleSetting "showMinAge")}}>
+          Minimum age
         </FbfCheckbox>
       </div>
       <div class="fbf-layout--flow-down content-padding-sm margin-right-xl">
-        <p class="text--h6">Travel time (beta)</p>
+        <span class="fbf-layout--flow-right">
+          <p class="text--h6">Travel time (beta)</p><TraveltimeBetaNotice/>
+        </span>
         <FbfTextField @label="Your location" @value="Delft" @disabled={{true}}/>
         <p class="text--muted margin-top-md">Calculate time based on ...</p>
-        <FbfRadio @value="car" @selectedValue="car" @isDisabled={{true}}>
+        <FbfRadio @value="car" @selectedValue={{@transportMode}} @change={{@changeTransportMode}}>
           Car
         </FbfRadio>
-        <FbfRadio @value="transit" @selectedValue="car" @isDisabled={{true}}>
+        <FbfRadio @value="transit" @selectedValue={{@transportMode}} @change={{@changeTransportMode}}>
           Public transport
         </FbfRadio>
+      </div>
+      <div class="fbf-layout--flow-down content-padding-sm margin-right-xl max-block-width-3">
+        <p class="text--h6">Minimum age</p>
+        <p class="text--muted">Filter runs where you don't meet the age requirements</p>
+        <FbfTextField @label="Your age" @change={{@filterMinAge}}/>
       </div>
       <div class="fbf-list-item bg-grey--50 bg-gradient-notice border-radius-sm">
         <FbfIcon @color="blue">
           info_outlined
         </FbfIcon>
         <div class="fbf-list-item__lines">
-          <p>Travel time is in beta for Delft. Want to use it for your location? <a href="https://matrix.to/#/+runtracker:matrix.org">Let us know in the chat</a>!</p>
+          <p>Some features are in beta. Have ideas for features? <a href="https://matrix.to/#/+runtracker:matrix.org">Let us know in the chat</a>!</p>
         </div>
       </div>
     </div>
     <div class="fbf-layout--flow-right">
-      <FbfButton {{on "click" @onClose}} @type="raised">Close</FbfButton>
+      <FbfButton {{on "click" @dismiss}} @type="raised">Close</FbfButton>
     </div>
   </div>
 {{/if}}

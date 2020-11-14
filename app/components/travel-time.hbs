@@ -1,0 +1,17 @@
+{{#if @model.address}}
+  <a href={{@model.googleMapsURI}} class="text--linkbutton" title={{@model.address}}>
+    {{#if (eq @transportMode "car")}}
+      {{#if this.travelTimeCarHours}}
+        <span class="text--strong">{{this.travelTimeCarHours}}</span>hr
+      {{/if}}
+      <span class="text--strong">{{this.travelTimeCarMinutes}}</span>mins
+    {{else if (eq @transportMode "transit")}}
+      {{#if this.travelTimeTransitHours}}
+        <span class="text--strong">{{this.travelTimeTransitHours}}</span>hr
+      {{/if}}
+      <span class="text--strong">{{this.travelTimeTransitMinutes}}</span>mins
+    {{/if}}
+  </a>
+{{else}}
+  <p class="text--muted-more">Unavailable</p>
+{{/if}}

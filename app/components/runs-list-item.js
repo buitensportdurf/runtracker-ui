@@ -1,12 +1,12 @@
 import Component from '@glimmer/component';
-import Ember from 'ember';
-import { computed } from '@ember/object';
-
-const { generateGuid } = Ember;
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class RunsListItem extends Component {
-  @computed()
-  get adddressTooltipId() {
-    return generateGuid();
+  @service('router') router;
+
+  @action
+  openRun() {
+    this.router.transitionTo('run', this.args.model.id);
   }
 }

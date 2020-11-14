@@ -1,0 +1,76 @@
+<div class="fbf-layout__center-column fbf-layout__center-column--huge-width fbf-layout__center-column--margin-vertical">
+  <div class="fbf-card--base border-radius-sm content-padding-lg">
+    <div class="fbf-layout--flow-right">
+      <FbfLinkButton @route="runs" @type="fab-mini" @color="white" @icon="arrow_back"/>
+      <div class="fbf-layout--flow-down margin-x-lg">
+        <h1 class="text--h2 text--thin">
+          {{this.model.city}}
+        </h1>
+        <OrganizationLink @model={{this.model}} class="margin-left-sm"/>
+      </div>
+    </div>
+
+    <div class="fbf-layout--flow-right">
+      <div class="fbf-list-item bg-grey--100 border-radius-md margin-right-md">
+        <div class="fbf-list-item__lines">
+          <p class="text--muted">Date</p>
+          <p class="text--h6">{{@model.dateCompact}}</p>
+        </div>
+      </div>
+      <div class="fbf-list-item bg-grey--100 border-radius-md margin-right-md">
+        <div class="fbf-list-item__lines">
+          <p class="text--muted">Travel time</p>
+          <p class="text--h6"><TravelTime @model={{@model}} @transportMode={{"car"}}/></p>
+        </div>
+      </div>
+      <div class="fbf-list-item bg-grey--100 border-radius-md margin-right-md">
+        <div class="fbf-list-item__lines">
+          <p class="text--muted">Minimum age</p>
+          <p class="text--h6">{{@model.minAge}}+</p>
+        </div>
+      </div>
+      <span class="fbf-layout__spanner"></span>
+      {{#if this.model.canEnroll}}
+        <FbfHrefButton @href={{this.model.enrollURI}} @type="raised" class="rt-enroll-button">
+          Enroll
+          <FbfIcon class="fbf-button__suffix-icon">arrow_forward</FbfIcon>
+        </FbfHrefButton>
+      {{else}}
+        <FbfButton @type="raised" @disabled={{true}} class="rt-enroll-button">
+          Enroll
+          <FbfIcon class="fbf-button__suffix-icon">arrow_forward</FbfIcon>
+        </FbfButton>
+      {{/if}}
+    </div>
+    <section class="rt-local-runners">
+      <h2 class="text--h5">Runners from Delft</h2>
+      <div class="rt-local-runners__container">
+        {{#each @model.delftUsers as |user|}}
+          <FbfIconChip>
+            <ProfilePicture @model={{user}}/>
+            <p class="text--h6">
+              {{user.fullName}}
+            </p>
+          </FbfIconChip>
+        {{/each}}
+      </div>
+    </section>
+    {{#each @model.circuits as |circuit|}}
+      <h2 class="text--h5">{{circuit.rawName}}</h2>
+
+      <ul class="fbf-list fbf-list--bordered">
+        {{#each circuit.users as |user|}}
+          <li class="fbf-list-item">
+            <ProfilePicture @model={{user}}/>
+            <div class="fbf-list-item__lines">
+              <p class="text--h6">
+                {{user.firstName}}
+                {{user.lastName}}
+              </p>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    {{/each}}
+  </div>
+</div>

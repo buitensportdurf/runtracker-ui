@@ -10,7 +10,6 @@ module.exports = function(environment) {
     host: 'https://api.survivalruns.nl',
     namespace: 'api',
 
-
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

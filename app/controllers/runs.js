@@ -5,31 +5,34 @@ import { isEmpty } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 
 export default class RunsController extends Controller {
-  @tracked debouncedFilter = '';
-  @tracked settings = {};
   @tracked isSettingsPanelExpanded = false;
 
   @tracked showCompetitions = true;
   @tracked showTravelTime = true;
+  @tracked showMinAge = true;
 
-  @computed('debouncedFilter', 'model.[]')
+  @tracked debouncedFilter = null;
+  @tracked minAgeFilter = null;
+  @tracked transportMode = "car";
+
+
+  @computed('debouncedFilter', 'minAgeFilter', 'model.[]')
   get filteredRuns() {
     let filter = this.debouncedFilter?.trim();
-    if (isEmpty(filter)) {
-      return this.model;
-    }
     return this.model.filter((run) => {
-      return run.city.toLowerCase().includes(filter) || run.organization.name.toLowerCase().includes(filter);
+      let nameFilter = isEmpty(filter) ? true : run.city.toLowerCase().includes(filter) || run.organization.name.toLowerCase().includes(filter);
+      let ageFilter = isEmpty(this.minAgeFilter) ? true : run.minAge >= this.minAgeFilter;
+      return nameFilter && ageFilter;
     });
   }
 
-  updateFilter = function() {
+  updateNameFilter = function() {
     this.debouncedFilter = this.filter;
   }
 
   @action
-  filterKeypress() {
-    debounce(this, this.updateFilter, 200);
+  changeFilter() {
+    debounce(this, this.updateNameFilter, 200);
   }
 
   @action
@@ -40,5 +43,15 @@ export default class RunsController extends Controller {
   @action
   toggleSetting(setting) {
     this[setting] = !this[setting];
+  }
+
+  @action
+  filterMinAge(age) {
+    this.minAgeFilter = age;
+  }
+
+  @action
+  changeTransportMode(mode) {
+    this.transportMode = mode;
   }
 }

@@ -1,29 +1,41 @@
-<FbfDataTableRow>
-  <FbfDataTableCell @isFixedLeft={{true}}>
+<FbfDataTableRow @click={{true}}>
+  <FbfDataTableCell @isFixedLeft={{true}} @click={{this.openRun}}>
     <p class="text--h6">{{@model.cityCapitalized}}</p>
   </FbfDataTableCell>
-  <FbfDataTableCell>
+  <FbfDataTableCell @isNumeric={{true}} @click={{this.openRun}}>
     <p class="text--muted" title={{@model.date}}>{{@model.dateCompact}}</p>
   </FbfDataTableCell>
   {{#if @showTravelTime}}
     <FbfDataTableCell>
-      {{#if @model.address}}
-        <a href={{@model.googleMapsURI}} class="text--linkbutton" title={{@model.address}}>
-          {{#if @model.travelTimeHours}}
-            <span class="text--strong">{{@model.travelTimeHours}}</span>hr
-          {{/if}}
-          <span class="text--strong">{{@model.travelTimeMinutes}}</span>mins
-        </a>
-      {{/if}}
+      <TravelTime @model={{@model}} @transportMode={{@transportMode}}/>
     </FbfDataTableCell>
   {{/if}}
-  <FbfDataTableCell>
-    <CompetitionsIndicator @circuits={{@model.circuitsMap}} />
+  {{#if @showMinAge}}
+    <FbfDataTableCell @isNumeric={{true}} @click={{this.openRun}}>
+      <p class="text--muted">{{@model.minAge}}</p>
+    </FbfDataTableCell>
+  {{/if}}
+  {{#if @showCompetitions}}
+    <FbfDataTableCell @click={{this.openRun}}>
+      <CompetitionsIndicator @circuits={{@model.competitionsMap}}/>
+    </FbfDataTableCell>
+  {{/if}}
+  <FbfDataTableCell @click={{this.openRun}}>
+    <CircuitsIndicator @model={{@model}}/>
+  </FbfDataTableCell>
+  <FbfDataTableCell @click={{this.openRun}}>
+    <div class="fbf-layout--flow-down">
+      {{#if @model.cancelled}}
+        <FbfBadge @color="red" @fixedWidth={{false}}>Canceled</FbfBadge>
+      {{else}}
+        <p class="text--muted text--dense">Awaiting to open ...</p>
+      {{/if}}
+      {{#each (take 3 @model.delftUsers) as |user|}}
+        <ProfilePicture @model={{user}} @hasTooltip={{true}}/>
+      {{/each}}
+    </div>
   </FbfDataTableCell>
   <FbfDataTableCell>
-    <CircuitsIndicator @circuits={{@model.distances}} />
-  </FbfDataTableCell>
-  <FbfDataTableCell>
-    <a href={{@model.organization.website}} class="text--link">{{@model.organization.name}}</a>
+    <OrganizationLink @model={{@model}}/>
   </FbfDataTableCell>
 </FbfDataTableRow>

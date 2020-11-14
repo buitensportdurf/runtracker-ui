@@ -5,7 +5,7 @@
     </h1>
     <div class="fbf-layout--flow-right">
       <FbfIcon>search</FbfIcon>
-      <FbfTextField @label="Search" @isCompact={{true}} @value={{this.filter}} @key-down={{this.filterKeypress}} class="margin-right-md"/>
+      <FbfTextField @label="Search" @isCompact={{true}} @value={{this.filter}} @change={{this.changeFilter}} class="margin-right-md"/>
       <FbfButton @color="grey" {{on "click" this.toggleSettingsPanel}}>
         <FbfIcon>settings</FbfIcon>
         settings
@@ -13,15 +13,20 @@
     </div>
     <SettingsPanel
       @isVisible={{this.isSettingsPanelExpanded}}
-      @onClose={{this.toggleSettingsPanel}}
-      @showCompetitions={{this.showCompetitions}}
-      @showTraveltime={{this.showTravelTime}}
+      @userAge={{this.userAge}}
+      @transportMode={{this.transportMode}}
       @toggleSetting={{this.toggleSetting}}
+      @changeTransportMode={{this.changeTransportMode}}
+      @filterMinAge={{this.filterMinAge}}
+      @dismiss={{this.toggleSettingsPanel}}
     />
     <RunsList
       @model={{this.filteredRuns}}
       @showCompetitions={{this.showCompetitions}}
       @showTravelTime={{this.showTravelTime}}
+      @showMinAge={{this.showMinAge}}
+      @transportMode={{this.transportMode}}
+      @minAgeFilter={{this.minAgeFilter}}
     />
   </div>
 </div>
