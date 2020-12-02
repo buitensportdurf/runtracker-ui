@@ -1,0 +1,12 @@
+.rt-settings-panel {
+  & > .fbf-layout--flow-right {
+    align-items: flex-start;
+
+    & > .fbf-layout--flow-down {
+      flex-shrink: 0;
+    }
+    & > .fbf-list-item {
+      flex-shrink: 1;
+    }
+  }
+}

@@ -1,22 +1,37 @@
 import Model, { attr, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
 import { readOnly } from '@ember/object/computed';
+import { isPresent } from '@ember/utils';
 import { RUN_ADDRESS_LUT } from '../run-lut';
 
 export default class RunModel extends Model {
   @attr('date') date;
+  @attr('date') opensAt;
+  @attr('date') closedAt;
+  @attr('boolean') resultsPublished;
+  @attr('boolean') cancelled;
+
   @attr('string') city;
   @attr('number') age;
   @attr('number') enrollId;
-  @attr('boolean') cancelled;
   @hasMany('circuit', { async: false }) circuits;
   @attr() organization;
 
   @readOnly('age') minAge;
 
+  @computed('city', 'isCityBelgium')
+  get cityDisplay() {
+    let city = this.city;
+    if (this.isCityBelgium) {
+      city = city.substring(0, city.toLowerCase().indexOf('(b)')).trim();
+      city += ' 🇧🇪';
+    }
+    return city.charAt(0).toUpperCase() + city.slice(1);
+  }
+
   @computed('city')
-  get cityCapitalized() {
-    return this.city.charAt(0).toUpperCase() + this.city.slice(1);
+  get isCityBelgium() {
+    return this.city.toLowerCase().indexOf('(b)') > 1;
   }
 
   @computed('date')
@@ -32,6 +47,32 @@ export default class RunModel extends Model {
       }
       return collect;
     }, []);
+  }
+
+  @computed('circuits.[]')
+  get competitions() {
+    return this.circuits.filter((circuit) => {
+      return isPresent(circuit.competitionType);
+    });
+  }
+
+  @computed('competitions')
+  get competitionsMap() {
+    let competitions = this.competitions;
+    return {
+      youth: competitions.any((circuit) => {
+        return circuit.competitionType === 'youth';
+      }),
+      short: competitions.any((circuit) => {
+        return circuit.competitionType === 'short';
+      }),
+      medium: competitions.any((circuit) => {
+        return circuit.competitionType === 'medium';
+      }),
+      long: competitions.any((circuit) => {
+        return circuit.competitionType === 'long';
+      })
+    }
   }
 
   @computed('enrollId')
@@ -60,16 +101,5 @@ export default class RunModel extends Model {
   @computed('address')
   get googleMapsURI() {
     return `https://www.google.com/maps/dir/Delft/${this.address.replace(/\s/g, "+")}/`.htmlSafe();
-  }
-
-  /* eslint-disable ember/require-computed-property-dependencies */
-  @computed('circuits.[]')
-  get competitionsMap() {
-    return {
-      youth: (Math.random() > 0.5),
-      short: (Math.random() > 0.5),
-      medium: (Math.random() > 0.5),
-      long: (Math.random() > 0.5)
-    }
   }
 }

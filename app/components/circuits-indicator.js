@@ -11,12 +11,12 @@ export default class CircuitsIndicator extends Component {
 
   @computed('args.model.distances.[]', 'isCircuitsExpanded')
   get hasCircuitsOverlow() {
-    return !this.isCircuitsExpanded && this.args.model.distances > OVERFLOW_THRESHOLD;
+    return !this.isCircuitsExpanded && this.args.model.distances.length > OVERFLOW_THRESHOLD;
   }
 
   @computed('args.model.distances.[]', 'isCircuitsExpanded')
   get circuitsOverflowLength() {
-    return this.args.model.distances - OVERFLOW_THRESHOLD;
+    return this.args.model.distances.length - OVERFLOW_THRESHOLD;
   }
 
   @action

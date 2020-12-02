@@ -1,0 +1,24 @@
+{{#if @model.delftUsers}}
+  <section class="rt-local-runners">
+    <h2 class="text--h5">Runners from Delft</h2>
+    <div class="rt-local-runners__container">
+      {{#each (if this.isExpanded @model.delftUsers (take this.overflowThreshold @model.delftUsers)) as |user|}}
+        <FbfIconChip>
+          <ProfilePicture @model={{user}}/>
+          <p class="text--h6">
+            {{user.fullName}}
+          </p>
+        </FbfIconChip>
+      {{/each}}
+    </div>
+    <FbfButton @color="grey" {{on "click" this.toggleExpanded}}>
+      {{#if this.hasRunnersOverlow}}
+        <FbfIcon>expand_more</FbfIcon>
+        Show rest (+{{this.runnersOverflowLength}})
+      {{else}}
+        <FbfIcon>expand_less</FbfIcon>
+        Show less
+      {{/if}}
+    </FbfButton>
+  </section>
+{{/if}}

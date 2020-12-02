@@ -1,0 +1,17 @@
+.rt-table {
+  .fbf-data-table__header .fbf-data-table__header-wrapper small {
+    margin: 0;
+  }
+}
+
+.rt-table--antimargin {
+  // offsetting .content-padding-lg
+  margin-left: -40px;
+  margin-right: -40px;
+  .fbf-data-table__section:first-child > .fbf-data-table__cell-wrapper {
+    padding-left: 40px
+  }
+  .fbf-data-table__section:last-child > .fbf-data-table__cell-wrapper {
+    padding-right: 40px
+  }
+}

@@ -18,50 +18,16 @@
   }
 }
 
-.rt-settings-panel {
-  & > .fbf-layout--flow-right {
-    align-items: flex-start;
-
-    & > .fbf-layout--flow-down {
-      flex-shrink: 0;
-    }
-    & > .fbf-list-item {
-      flex-shrink: 1;
-    }
-  }
-}
-
-.fbf-data-table__header .fbf-data-table__header-wrapper small {
-  margin: 0;
-}
-
 .rt-enroll-button {
   border-radius: 32px;
   padding: 8px 24px;
 }
 
-.rt-local-runners {
-  h2 {
-    padding-top: 16px;
-    margin-bottom: 8px;
-  }
-  .rt-local-runners__container {
-    padding: 8px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .fbf-icon-chip {
-    margin-right: 24px;
-    margin-bottom: 24px;
-    border-radius: 48px;
+.rt-run-list-item--large {
+  height: 120px !important;
 
-    .fbf-profile-picture {
-      width: 48px;
-      height: 48px;
-      margin-top: -8px;
-      margin-left: -8px;
-      margin-bottom: -8px;
-    }
+  .fbf-data-table__cell-wrapper {
+    padding: 16px;
+    align-items: flex-start;
   }
 }

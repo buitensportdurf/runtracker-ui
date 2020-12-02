@@ -1,0 +1,67 @@
+<button type="button" class="rt-circuits-expander__header" {{on "click" this.toggleExpanded}}>
+  {{#unless @model.isDummy}}
+    {{#if this.isExpanded}}
+      <FbfIcon>expand_less</FbfIcon>
+    {{else}}
+      <FbfIcon>expand_more</FbfIcon>
+    {{/if}}
+  {{/unless}}
+  <p class="text--h6">{{@model.distance}} km</p>
+  {{#if @model.isCompetition}}
+    <FbfIconChip>
+      <FbfIcon @color="blue">stars</FbfIcon>
+      <p>Competition</p>
+      {{@model.competitionType}}
+    </FbfIconChip>
+  {{else}}
+    <FbfIconChip>
+      {{#if @model.isIndividual}}
+      <FbfIcon>account_circle</FbfIcon><p>Individual</p>
+      {{else if @model.isCouple}}
+      <FbfIcon>group</FbfIcon><p>Couplerun</p>
+      {{else}}
+      <FbfIcon>group_work</FbfIcon><p>Grouprun: <strong>{{@model.groupSize}}p</strong></p>
+      {{/if}}
+    </FbfIconChip>
+  {{/if}}
+
+  <FbfChip><p>€{{@model.price}}</p></FbfChip>
+  <h3 class="text--small text--muted">{{@model.rawName}}</h3>
+
+  <CircuitCapacity @model={{@model}}/>
+</button>
+{{#if this.isExpanded}}
+  <FbfDataTable
+    @rowHeight="small"
+    class="rt-table rt-circuits-expander__users-table"
+    as |components|
+  >
+    <components.body>
+      <FbfDataTableRow>
+        <FbfDataTableHeader @minWidth={{260}}>
+          Name
+        </FbfDataTableHeader>
+        <FbfDataTableHeader @maxWidth={{112}}>
+          City
+        </FbfDataTableHeader>
+        <FbfDataTableHeader @isNumeric={{true}} @maxWidth={{112}}>
+          Gender
+        </FbfDataTableHeader>
+      </FbfDataTableRow>
+      {{#each @model.users as |user|}}
+        <FbfDataTableRow>
+          <FbfDataTableCell>
+            <ProfilePicture @model={{user}}/>
+            {{user.fullName}}
+          </FbfDataTableCell>
+          <FbfDataTableCell>
+            {{user.city}}
+          </FbfDataTableCell>
+          <FbfDataTableCell @isNumeric={{true}}>
+            {{user.gender}}
+          </FbfDataTableCell>
+        </FbfDataTableRow>
+      {{/each}}
+    </components.body>
+  </FbfDataTable>
+{{/if}}

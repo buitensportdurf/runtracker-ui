@@ -1,0 +1,21 @@
+.rt-circuits-expander__header {
+  @include fbf-layout--actionable;
+  @include content-padding-md(row, true);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  margin-left: -24px;
+
+  .fbf-chip {
+    white-space: nowrap;
+  }
+  h3 {
+    display: flex;
+    flex-grow: 1;
+  }
+}
+.rt-circuits-expander__users-table {
+  max-width: 520px;
+}

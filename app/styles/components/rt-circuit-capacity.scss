@@ -1,0 +1,32 @@
+.rt-circuit-capacity {
+  position: relative;
+  overflow: hidden;
+  width: 160px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+.rt-circuit-capacity__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  border-radius: 16px 0 0 16px;
+  color: white;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  p {
+    padding-left: 12px;
+  }
+
+  &--red {
+    background-color: $color-red;
+  }
+  &--orange {
+    background-color: $color-orange;
+  }
+  &--blue {
+    background-color: $color-blue;
+  }
+}

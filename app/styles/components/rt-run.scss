@@ -1,0 +1,21 @@
+.rt-run__header, .rt-run__meta {
+  @include fbf-layout--flow-right;
+}
+.rt-run__top {
+  @include fbf-layout--flow-right;
+  @include fbf-layout--flex-spread;
+
+  @include mq-in-desktop {
+    @include fbf-layout--flow-down;
+    align-items: stretch;
+    .rt-run__header + .rt-run__meta {
+      margin-top: 24px;
+    }
+  }
+}
+
+.rt-run__circuits {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}

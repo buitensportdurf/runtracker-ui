@@ -1,6 +1,6 @@
-<FbfDataTableRow @click={{true}}>
+<FbfDataTableRow @click={{true}} class={{if @model.delftUsers.length "rt-run-list-item--large"}}>
   <FbfDataTableCell @isFixedLeft={{true}} @click={{this.openRun}}>
-    <p class="text--h6">{{@model.cityCapitalized}}</p>
+    <p class="text--h6">{{@model.cityDisplay}}</p>
   </FbfDataTableCell>
   <FbfDataTableCell @isNumeric={{true}} @click={{this.openRun}}>
     <p class="text--muted" title={{@model.date}}>{{@model.dateCompact}}</p>
@@ -30,9 +30,19 @@
       {{else}}
         <p class="text--muted text--dense">Awaiting to open ...</p>
       {{/if}}
-      {{#each (take 3 @model.delftUsers) as |user|}}
-        <ProfilePicture @model={{user}} @hasTooltip={{true}}/>
-      {{/each}}
+      {{#if @model.delftUsers.length}}
+        <p class="text--muted"><strong>{{@model.delftUsers.length}} runners</strong> from Delft joining</p>
+        <div class="rt-local-runners__preview">
+          {{#each (take 4 @model.delftUsers) as |user|}}
+            <ProfilePicture @model={{user}} @hasTooltip={{true}}/>
+          {{/each}}
+          {{#if this.hasRunnersOverlow}}
+            <div class="rt-local-runners__preview-overflow-indicator">
+              <p class="text--h6 text--muted">+{{this.runnersOverflowLength}}</p>
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
     </div>
   </FbfDataTableCell>
   <FbfDataTableCell>

@@ -19,11 +19,12 @@ export default class RunsController extends Controller {
   @computed('debouncedFilter', 'minAgeFilter', 'model.[]')
   get filteredRuns() {
     let filter = this.debouncedFilter?.trim();
-    return this.model.filter((run) => {
+    let runs = this.model.filter((run) => {
       let nameFilter = isEmpty(filter) ? true : run.city.toLowerCase().includes(filter) || run.organization.name.toLowerCase().includes(filter);
       let ageFilter = isEmpty(this.minAgeFilter) ? true : run.minAge >= this.minAgeFilter;
       return nameFilter && ageFilter;
     });
+    return runs.sortBy('date');
   }
 
   updateNameFilter = function() {

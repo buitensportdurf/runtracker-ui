@@ -1,0 +1,51 @@
+.rt-local-runners {
+  h2 {
+    padding-top: 16px;
+    margin-bottom: 8px;
+  }
+  .rt-local-runners__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .fbf-icon-chip {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 48px;
+  }
+
+  @include mq-gt-desktop {
+    .rt-local-runners__container {
+      padding: 8px;
+      margin-bottom: -16px
+    }
+    .fbf-icon-chip {
+      margin-right: 24px;
+      margin-bottom: 24px;
+    }
+    .fbf-icon-chip .fbf-profile-picture {
+      width: 48px;
+      height: 48px;
+      margin-top: -8px;
+      margin-left: -8px;
+      margin-bottom: -8px;
+    }
+  }
+}
+
+.rt-local-runners__preview {
+  @include fbf-layout--flow-right;
+
+  .fbf-profile-picture, .rt-local-runners__preview-overflow-indicator {
+    border: solid 4px white;
+    border-radius: 50%;
+    margin-right: -10px;
+  }
+  .rt-local-runners__preview-overflow-indicator {
+    @include fbf-layout--flex-center;
+    background-color: $bg-grey;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+  }
+}
