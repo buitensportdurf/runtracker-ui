@@ -5,9 +5,9 @@ import { isPresent } from '@ember/utils';
 import { RUN_ADDRESS_LUT } from '../run-lut';
 
 export default class RunModel extends Model {
-  @attr('date') date;
-  @attr('date') opensAt;
-  @attr('date') closedAt;
+  @attr('moment') date;
+  @attr('moment') opensAt;
+  @attr('moment') closedAt;
   @attr('boolean') resultsPublished;
   @attr('boolean') cancelled;
 
@@ -32,11 +32,6 @@ export default class RunModel extends Model {
   @computed('city')
   get isCityBelgium() {
     return this.city.toLowerCase().indexOf('(b)') > 1;
-  }
-
-  @computed('date')
-  get dateCompact() {
-    return `${this.date.getDate()}-${this.date.getMonth()}-${this.date.getFullYear()}`.htmlSafe();
   }
 
   @computed('circuits.[]')

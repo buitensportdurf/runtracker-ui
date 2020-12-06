@@ -3,7 +3,9 @@
     <p class="text--h6">{{@model.cityDisplay}}</p>
   </FbfDataTableCell>
   <FbfDataTableCell @isNumeric={{true}} @click={{this.openRun}}>
-    <p class="text--muted" title={{@model.date}}>{{@model.dateCompact}}</p>
+    <p class="text--muted" title={{@model.date}}>
+      {{moment-format @model.date 'D MMM YYYY'}}
+    </p>
   </FbfDataTableCell>
   {{#if @showTravelTime}}
     <FbfDataTableCell>

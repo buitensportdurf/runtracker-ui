@@ -1,12 +1,25 @@
-.rt-settings-panel {
-  & > .fbf-layout--flow-right {
-    align-items: flex-start;
+.rt-settings-panel__columns {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto;
+  grid-gap: 32px 40px;
 
-    & > .fbf-layout--flow-down {
-      flex-shrink: 0;
-    }
-    & > .fbf-list-item {
-      flex-shrink: 1;
-    }
+  & > .rt-settings-panel__setting {
+    @include content-margin(column, 8px);
+    @include fbf-layout--flow-down;
+  }
+  & > .fbf-list-item {
+    flex-shrink: 1;
+  }
+
+  @media (max-width: $desktop-max-width) {
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+  }
+  @media (max-width: $notepad-width-in) {
+    grid-template-columns: auto auto;
+  }
+  @media (max-width: $phone-max-width) {
+    grid-template-columns: auto;
   }
 }
