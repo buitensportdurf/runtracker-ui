@@ -17,7 +17,7 @@
   {{/if}}
   {{#if @showCompetitions}}
     <FbfDataTableCell @click={{this.openRun}}>
-      <CompetitionsIndicator @circuits={{@model.competitionsMap}}/>
+      <CompetitionsIndicator @model={{@model.competitionsMap}}/>
     </FbfDataTableCell>
   {{/if}}
   <FbfDataTableCell @click={{this.openRun}}>

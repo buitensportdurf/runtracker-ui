@@ -5,6 +5,7 @@ import { isEmpty } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 
 export default class RunsController extends Controller {
+
   @tracked isSettingsPanelExpanded = false;
 
   @tracked showCompetitions = true;

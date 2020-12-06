@@ -1,30 +1,54 @@
 <div class="rt-competitions-indicator">
-  <FbfBadge @color="blue" class={{if @circuits.youth 'is-active' 'is-inactive'}} id={{this.youthCircuitTooltipId}}>Y</FbfBadge>
-  <FbfBadge @color="green" class={{if @circuits.short 'is-active' 'is-inactive'}} id={{this.shortCircuitTooltipId}}>S</FbfBadge>
-  <FbfBadge @color="orange" class={{if @circuits.medium 'is-active' 'is-inactive'}} id={{this.mediumCircuitTooltipId}}>M</FbfBadge>
-  <FbfBadge @color="red" class={{if @circuits.long 'is-active' 'is-inactive'}} id={{this.longCircuitTooltipId}}>L</FbfBadge>
+  <FbfBadge @color="blue" @fixedWidth={{this.isCompact}} class={{if @model.youth 'is-active' 'is-inactive'}} id={{this.youthCircuitTooltipId}}>
+    {{#if this.isCompact}}
+      Y
+    {{else}}
+      Youth
+    {{/if}}
+  </FbfBadge>
+  <FbfBadge @color="green" @fixedWidth={{this.isCompact}} class={{if @model.short 'is-active' 'is-inactive'}} id={{this.shortCircuitTooltipId}}>
+    {{#if this.isCompact}}
+      S
+    {{else}}
+      Short
+    {{/if}}
+  </FbfBadge>
+  <FbfBadge @color="orange" @fixedWidth={{this.isCompact}} class={{if @model.medium 'is-active' 'is-inactive'}} id={{this.mediumCircuitTooltipId}}>
+    {{#if this.isCompact}}
+      M
+    {{else}}
+      Medium
+    {{/if}}
+  </FbfBadge>
+  <FbfBadge @color="red" @fixedWidth={{this.isCompact}} class={{if @model.long 'is-active' 'is-inactive'}} id={{this.longCircuitTooltipId}}>
+    {{#if this.isCompact}}
+      L
+    {{else}}
+      Long
+    {{/if}}
+  </FbfBadge>
 
   <FbfTooltip @for={{this.youthCircuitTooltipId}} class="fbf-layout--flow-down">
     <span>Youth survival run</span>
-    {{#unless @circuits.youth}}
+    {{#unless @model.youth}}
       <span class="text--muted">(not available)</span>
     {{/unless}}
   </FbfTooltip>
   <FbfTooltip @for={{this.shortCircuitTooltipId}} class="fbf-layout--flow-down">
     <span>Short survival run</span>
-    {{#unless @circuits.short}}
+    {{#unless @model.short}}
       <span class="text--muted">(not available)</span>
     {{/unless}}
   </FbfTooltip>
   <FbfTooltip @for={{this.mediumCircuitTooltipId}} class="fbf-layout--flow-down">
     <span>Medium-length survival run</span>
-    {{#unless @circuits.medium}}
+    {{#unless @model.medium}}
       <span class="text--muted">(not available)</span>
     {{/unless}}
   </FbfTooltip>
   <FbfTooltip @for={{this.longCircuitTooltipId}} class="fbf-layout--flow-down">
     <span>Long survival run</span>
-    {{#unless @circuits.long}}
+    {{#unless @model.long}}
       <span class="text--muted">(not available)</span>
     {{/unless}}
   </FbfTooltip>

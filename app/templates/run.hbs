@@ -50,8 +50,18 @@
     <div class="rt-run__circuits">
       <h2 class="text--h5">Circuits</h2>
       {{#each @model.circuits as |circuit|}}
-        <CircuitsExpander @model={{circuit}}/>
+        {{#if circuit.isDummy}}
+          <p class="text--h6 margin-y-sm">{{circuit.distance}} km</p>
+        {{else}}
+          <CircuitsExpander @model={{circuit}}/>
+        {{/if}}
       {{/each}}
     </div>
+    {{#if @model.hasDummies}}
+    <div class="fbf-layout--flow-down">
+      <h2 class="text--h5 margin-bottom-md">Competitions</h2>
+      <CompetitionsIndicator @model={{@model.competitionsMap}} @isCompact={{false}}/>
+    </div>
+    {{/if}}
   </div>
 </div>

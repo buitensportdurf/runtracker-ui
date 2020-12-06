@@ -1,7 +1,7 @@
 <FbfDataTable
   @hasFixedLeftColumns={{true}}
   @fixedLeftWidth={{3}}
-  @rowHeight="medium"
+  @rowHeight={{if this.responsive.isDesktopWidth "medium" "small"}}
   class="rt-table rt-table--antimargin"
   as |components|
 >

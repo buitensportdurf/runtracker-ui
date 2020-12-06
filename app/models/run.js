@@ -40,6 +40,11 @@ export default class RunModel extends Model {
   }
 
   @computed('circuits.[]')
+  get hasDummies() {
+    return this.circuits.isAny('dummy');
+  }
+
+  @computed('circuits.[]')
   get distances() {
     return this.circuits.reduce((collect, circuit) => {
       if (!collect.includes(circuit.distance)) {
