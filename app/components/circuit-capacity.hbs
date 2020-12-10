@@ -1,12 +1,14 @@
 <div class="fbf-chip rt-circuit-capacity">
-  <div class="rt-circuit-capacity__bar {{this._capacityBarClass}}" style={{this._capacityBarStyles}}>
+  <div class="rt-circuit-capacity__bar context--dark {{this._capacityBarClass}}" style={{this._capacityBarStyles}}>
     <p>
       <strong>{{@model.capacityLeft}}</strong> left
-      <span class="text--divider">&middot;</span> {{@model.userCapacity}} capacity
+      <span class="text--divider">&middot;</span>
+      <span class="text--muted">{{@model.userCapacity}} places</span>
     </p>
   </div>
   <p>
     <strong>{{@model.capacityLeft}}</strong> left
-    <span class="text--divider">&middot;</span> {{@model.userCapacity}} capacity
+    <span class="text--divider">&middot;</span>
+    <span class="text--muted">{{@model.userCapacity}} places</span>
   </p>
 </div>

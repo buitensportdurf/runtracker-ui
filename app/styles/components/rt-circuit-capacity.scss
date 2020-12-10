@@ -12,12 +12,12 @@
   left: 0;
   width: 0%;
   border-radius: 16px 0 0 16px;
-  color: white;
   overflow: hidden;
   box-sizing: border-box;
 
   p {
     padding-left: 12px;
+    text-align: left;
   }
 
   &--red {
