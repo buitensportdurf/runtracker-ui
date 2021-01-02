@@ -1,7 +1,11 @@
 import Component from '@glimmer/component';
-import { computed } from '@ember/object';
+import { action, computed } from '@ember/object';
+import { later, cancel } from '@ember/runloop';
+import { tracked } from '@glimmer/tracking';
 
 export default class LocalRunners extends Component {
+  @tracked startAnimation = false;
+
   @computed('args.model.capacityUsed')
   get _capacityBarStyles() {
     return `width: ${this.args.model.capacityUsed * 100}%`.htmlSafe();
@@ -16,5 +20,16 @@ export default class LocalRunners extends Component {
     } else {
       return `rt-circuit-capacity__bar--blue`;
     }
+  }
+
+  @action
+  scheduleAnimation() {
+    this.animationTimeout = later(() => {
+      this.startAnimation = true;
+    }, 100 + 50 * this.args.index);
+  }
+
+  willDestroy() {
+    cancel(this.animationTimeout);
   }
 }

@@ -10,6 +10,8 @@
 }
 
 .fbf-layout__center-column {
+  max-width: 1400px;
+  
   @media(min-width: $desktop-layout-min-width) {
     margin-top: 0vh
   }

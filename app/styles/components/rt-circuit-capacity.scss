@@ -14,6 +14,8 @@
   border-radius: 16px 0 0 16px;
   overflow: hidden;
   box-sizing: border-box;
+  transition-property: width background-color;
+  transition-duration: 0.3s;
 
   p {
     padding-left: 12px;
@@ -27,6 +29,12 @@
     background-color: $color-orange;
   }
   &--blue {
+    background-color: $color-blue;
+  }
+
+  // This class is removed after a while to animate in
+  &--before {
+    width: 0% !important;
     background-color: $color-blue;
   }
 }

@@ -1,5 +1,5 @@
 <div class="fbf-layout__center-column fbf-layout__center-column--huge-width fbf-layout__center-column--margin-vertical">
-  <div class="fbf-card--base border-radius-sm content-padding-lg">
+  <div class="fbf-card--base border-radius-sm content-padding-lg fbf-layout--flow-down">
     <div class="rt-run__top">
       <div class="rt-run__header">
         <FbfLinkButton @route="runs" @type="fab-mini" @color="white" @icon="arrow_back"/>
@@ -15,7 +15,9 @@
         <div class="fbf-list-item bg-grey--100 border-radius-md margin-right-md">
           <div class="fbf-list-item__lines">
             <p class="text--muted">Date</p>
-            <p class="text--h6">{{this.model.dateCompact}}</p>
+            <p class="text--h6" title={{@model.date}}>
+              {{moment-format @model.date 'D MMM YYYY'}}
+            </p>
           </div>
         </div>
         <div class="fbf-list-item bg-grey--100 border-radius-md margin-right-md">
@@ -47,21 +49,27 @@
 
     <LocalRunners @model={{this.model}}/>
 
+    {{#if @model.hasDummies}}
+      <div class="rt-run__status">
+        <p class="text--h5">Limited information available</p>
+        <p class="text--muted">Awaiting run to open and detailed information to be published ...</p>
+      </div>
+    {{/if}}
     <div class="rt-run__circuits">
       <h2 class="text--h5">Circuits</h2>
-      {{#each @model.circuits as |circuit|}}
+      {{#each @model.circuits as |circuit index|}}
         {{#if circuit.isDummy}}
           <p class="text--h6 margin-y-sm">{{circuit.distance}} km</p>
         {{else}}
-          <CircuitsExpander @model={{circuit}}/>
+          <CircuitsExpander @model={{circuit}} @index={{index}}/>
         {{/if}}
       {{/each}}
     </div>
     {{#if @model.hasDummies}}
-    <div class="fbf-layout--flow-down">
-      <h2 class="text--h5 margin-bottom-md">Competitions</h2>
-      <CompetitionsIndicator @model={{@model.competitionsMap}} @isCompact={{false}}/>
-    </div>
+      <div class="fbf-layout--flow-down">
+        <h2 class="text--h5 margin-bottom-md">Competitions</h2>
+        <CompetitionsIndicator @model={{@model.competitionsMap}} @isCompact={{false}}/>
+      </div>
     {{/if}}
   </div>
 </div>

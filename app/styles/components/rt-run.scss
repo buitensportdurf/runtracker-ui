@@ -14,6 +14,13 @@
   }
 }
 
+.rt-run__status {
+  @include content-padding-lg(column, false);
+  border-radius: 8px;
+  background-color: $bg-grey--100;
+  align-self: flex-start;
+}
+
 .rt-run__circuits {
   display: flex;
   flex-direction: column;

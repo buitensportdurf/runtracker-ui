@@ -8,8 +8,8 @@
   {{/unless}}
   <p class="text--h6">{{@model.distance}} km</p>
   {{#if @model.isCompetition}}
-    <FbfIconChip>
-      <FbfIcon @color="blue">stars</FbfIcon>
+    <FbfIconChip @color="blue">
+      <FbfIcon>stars</FbfIcon>
       <p>Competition</p>
       {{@model.competitionType}}
     </FbfIconChip>
@@ -28,7 +28,7 @@
   <FbfChip><p>€{{@model.price}}</p></FbfChip>
   <h3 class="text--small text--muted">{{@model.rawName}}</h3>
 
-  <CircuitCapacity @model={{@model}}/>
+  <CircuitCapacity @model={{@model}} @index={{@index}}/>
 </button>
 {{#if this.isExpanded}}
   <FbfDataTable

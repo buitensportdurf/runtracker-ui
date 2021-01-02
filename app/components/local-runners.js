@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { set, action, computed } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-const OVERFLOW_THRESHOLD = 10;
+const OVERFLOW_THRESHOLD = 5;
 
 export default class LocalRunners extends Component {
   overflowThreshold = OVERFLOW_THRESHOLD;
