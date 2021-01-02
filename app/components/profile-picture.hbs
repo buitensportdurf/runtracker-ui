@@ -1,11 +1,13 @@
 <FbfProfilePicture
   @showUser={{true}}
+  @src={{if @model.hasProfilePicture @model.profilePictureSrc}}
   @colorSeed={{@model.id}}
-  @content={{this.fullName}}
+  @content={{@model.fullName}}
   @id={{this.tooltipId}}
+  {{did-insert (fn @model.preloadProfilePicture)}}
 />
 {{#if @hasTooltip}}
   <FbfTooltip @for={{this.tooltipId}}>
-    {{this.fullName}}
+    {{@model.fullName}}
   </FbfTooltip>
 {{/if}}

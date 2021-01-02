@@ -9,7 +9,7 @@ export default class RunsController extends Controller {
 
   @tracked isSettingsPanelExpanded = false;
 
-  @tracked showCanceled = false;
+  @tracked showCanceled = true;
   @tracked showPassed = false;
   @tracked showCompetitions = true;
   @tracked showTravelTime = true;

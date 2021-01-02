@@ -3,7 +3,7 @@
     <div class="rt-settings-panel__columns">
       <div class="rt-settings-panel__setting">
         <p class="text--h6">Filtered runs</p>
-        <FbfCheckbox @value={{true}} {{on "click" (fn @toggleSetting "showCanceled")}}>
+        <FbfCheckbox @value={{false}} {{on "click" (fn @toggleSetting "showCanceled")}}>
           Hide canceled runs
         </FbfCheckbox>
         <FbfCheckbox @value={{true}} {{on "click" (fn @toggleSetting "showPassed")}}>
