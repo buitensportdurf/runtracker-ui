@@ -1,0 +1,59 @@
+<FbfButton
+  @type="fab-mini"
+  @color="white"
+  @icon="chevron_left"
+  @disabled={{eq @value 2020}}
+  id="previous-season"
+  {{on 'click' (fn @selectSeason 2020)}}
+/>
+
+<FbfOptionsField
+  @value={{@value}}
+  @displayValue={{@displayValue}}
+  @width={{4}}
+  class="margin-x-md"
+  as |components|
+>
+  <components.options-field @label="Select season"/>
+  <components.menu @maxHeight={{6}}>
+    <components.item @value={{null}}>
+      <div class="fbf-list-item__lines">
+        <p>Current season (upcoming)</p>
+      </div>
+    </components.item>
+    <components.item @value={{2020}}>
+      <div class="fbf-list-item__lines">
+        <p>Current season (past)</p>
+      </div>
+    </components.item>
+    <hr>
+    <li class="fbf-list-item">
+      <div class="fbf-list-item__lines">
+        <p class="text__subheader">Coming soon ...</p>
+      </div>
+    </li>
+    {{#each (range 2006 2019) as |year|}}
+      <components.item @value={{year}} @disabled={{true}}>
+        <div class="fbf-list-item__lines">
+          <p class="text--muted-more">{{year}} - {{inc year}}</p>
+        </div>
+      </components.item>
+    {{/each}}
+  </components.menu>
+</FbfOptionsField>
+<FbfButton
+  @type="fab-mini"
+  @color="white"
+  @icon="chevron_right"
+  @disabled={{eq @value null}}
+  id="next-season"
+  {{on 'click' (fn @selectSeason null)}}
+/>
+
+
+<FbfTooltip @for="previous-season">
+  Previous
+</FbfTooltip>
+<FbfTooltip @for="next-season">
+  Next
+</FbfTooltip>

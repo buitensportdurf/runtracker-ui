@@ -1,26 +1,46 @@
 <div class="rt-competitions-indicator">
-  <FbfBadge @color="blue" @fixedWidth={{this.isCompact}} class={{if @model.youth 'is-active' 'is-inactive'}} id={{this.youthCircuitTooltipId}}>
+  <FbfBadge
+    @color="blue"
+    @fixedWidth={{this.isCompact}}
+    class={{if @model.youth 'is-active' 'is-inactive'}}
+    id={{this.youthCircuitTooltipId}}
+  >
     {{#if this.isCompact}}
       Y
     {{else}}
       Youth
     {{/if}}
   </FbfBadge>
-  <FbfBadge @color="green" @fixedWidth={{this.isCompact}} class={{if @model.short 'is-active' 'is-inactive'}} id={{this.shortCircuitTooltipId}}>
+  <FbfBadge
+    @color="green"
+    @fixedWidth={{this.isCompact}}
+    class={{if @model.short 'is-active' 'is-inactive'}}
+    id={{this.shortCircuitTooltipId}}
+  >
     {{#if this.isCompact}}
       S
     {{else}}
       Short
     {{/if}}
   </FbfBadge>
-  <FbfBadge @color="orange" @fixedWidth={{this.isCompact}} class={{if @model.medium 'is-active' 'is-inactive'}} id={{this.mediumCircuitTooltipId}}>
+  <FbfBadge
+    @color="orange"
+    @fixedWidth={{this.isCompact}}
+    class={{if @model.medium 'is-active' 'is-inactive'}}
+    id={{this.mediumCircuitTooltipId}}
+  >
     {{#if this.isCompact}}
       M
     {{else}}
       Medium
     {{/if}}
   </FbfBadge>
-  <FbfBadge @color="red" @fixedWidth={{this.isCompact}} class={{if @model.long 'is-active' 'is-inactive'}} id={{this.longCircuitTooltipId}}>
+  <FbfBadge
+    @color="red"
+    @fixedWidth={{this.isCompact}}
+    class={{if @model.long 'is-active' 'is-inactive'}}
+    id={{this.longCircuitTooltipId}}
+  >
     {{#if this.isCompact}}
       L
     {{else}}

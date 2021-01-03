@@ -1,8 +1,16 @@
 <div class="rt-runs-page fbf-layout__center-column fbf-layout__center-column--margin-vertical">
   <div class="fbf-card--base border-radius-sm content-padding-lg">
-    <h1 class="text--h2 text--thin">
-      Survivalruns
-    </h1>
+    <div class="fbf-layout--flow-right">
+      <h1 class="text--h2 text--thin">
+        Survivalruns
+      </h1>
+      <span class="fbf-layout__spanner"></span>
+      <SeasonPicker
+        @selectSeason={{this.selectSeason}}
+        @value={{this.showSeason}}
+        @displayValue={{this.seasonDisplay}}
+      />
+    </div>
     <div class="fbf-layout--flow-right">
       <FbfIcon>search</FbfIcon>
       <FbfTextField @label="Search" @isCompact={{true}} @value={{this.filter}} @change={{this.changeFilter}} class="margin-right-md"/>
@@ -12,13 +20,14 @@
       </FbfButton>
     </div>
     <SettingsPanel
-      @isVisible={{this.isSettingsPanelExpanded}}
-      @userAge={{this.userAge}}
-      @transportMode={{this.transportMode}}
       @toggleSetting={{this.toggleSetting}}
+      @isVisible={{this.isSettingsPanelExpanded}}
+      @dismiss={{this.toggleSettingsPanel}}
+
+      @transportMode={{this.transportMode}}
       @changeTransportMode={{this.changeTransportMode}}
       @filterMinAge={{this.filterMinAge}}
-      @dismiss={{this.toggleSettingsPanel}}
+      @userAge={{this.userAge}}
     />
     <RunsList
       @model={{this.filteredRuns}}

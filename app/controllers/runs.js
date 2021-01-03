@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { action, computed } from '@ember/object';
 import { debounce } from '@ember/runloop';
-import { isEmpty } from '@ember/utils';
+import { isPresent, isEmpty, isNone } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 import moment from 'moment';
 
@@ -10,7 +10,7 @@ export default class RunsController extends Controller {
   @tracked isSettingsPanelExpanded = false;
 
   @tracked showCanceled = true;
-  @tracked showPassed = false;
+  @tracked showSeason = null;
   @tracked showCompetitions = true;
   @tracked showTravelTime = true;
   @tracked showMinAge = true;
@@ -19,17 +19,26 @@ export default class RunsController extends Controller {
   @tracked minAgeFilter = null;
   @tracked transportMode = "car";
 
-  @computed('showCanceled', 'showPassed', 'debouncedFilter', 'minAgeFilter', 'model.[]')
+  @computed('showCanceled', 'showSeason', 'debouncedFilter', 'minAgeFilter', 'model.[]')
   get filteredRuns() {
     let filter = this.debouncedFilter?.trim();
     let runs = this.model.filter((run) => {
       let nameFilter = isEmpty(filter) ? true : run.city.toLowerCase().includes(filter) || run.organization.name.toLowerCase().includes(filter);
       let ageFilter = isEmpty(this.minAgeFilter) ? true : run.minAge >= this.minAgeFilter;
-      let futureFilter = this.showPassed ? true : run.date > moment();
+      let futureFilter = isNone(this.showSeason) ? run.date > moment() : run.date < moment();
       let notCanceledFilter = this.showCanceled ? true : !run.cancelled;
       return nameFilter && ageFilter && futureFilter && notCanceledFilter;
     });
     return runs.sortBy('date');
+  }
+
+  @computed('showSeason')
+  get seasonDisplay() {
+    if (isNone(this.showSeason)) {
+      return 'Current season (upcoming)';
+    } else {
+      return 'Current season (past)';
+    }
   }
 
   updateNameFilter = function() {
@@ -59,5 +68,10 @@ export default class RunsController extends Controller {
   @action
   changeTransportMode(mode) {
     this.transportMode = mode;
+  }
+
+  @action
+  selectSeason(year) {
+    this.showSeason = year;
   }
 }
