@@ -12,7 +12,7 @@
       <TravelTime @model={{@model}} @transportMode={{@transportMode}}/>
     </FbfDataTableCell>
   {{/if}}
-  {{#if @showMinAge}}
+  {{#if @showAge}}
     <FbfDataTableCell @isNumeric={{true}} @click={{this.openRun}}>
       <p class="text--muted">{{@model.minAge}}</p>
     </FbfDataTableCell>

@@ -21,7 +21,7 @@
           </span>
         </FbfDataTableHeader>
       {{/if}}
-      {{#if @showMinAge}}
+      {{#if @showAge}}
         <FbfDataTableHeader @isNumeric={{true}}>
           Minimum age
         </FbfDataTableHeader>
@@ -46,7 +46,7 @@
         @model={{run}}
         @showCompetitions={{@showCompetitions}}
         @showTravelTime={{@showTravelTime}}
-        @showMinAge={{@showMinAge}}
+        @showAge={{@showAge}}
         @transportMode={{@transportMode}}
       />
     {{/each}}

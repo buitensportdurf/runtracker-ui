@@ -2,12 +2,11 @@
   <div class="rt-settings-panel margin-y-xl">
     <div class="rt-settings-panel__columns">
       <div class="rt-settings-panel__setting">
-        <p class="text--h6">Filtered runs</p>
+        <p class="text--h6">Filter runs</p>
         <FbfCheckbox @value={{false}} {{on "click" (fn @toggleSetting "showCanceled")}}>
           Hide canceled runs
         </FbfCheckbox>
-      </div>
-      <div class="rt-settings-panel__setting">
+
         <p class="text--h6">Show columns</p>
         <FbfCheckbox @value={{true}} @disabled={{true}}>
           Competitions
@@ -15,7 +14,7 @@
         <FbfCheckbox @value={{true}} {{on "click" (fn @toggleSetting "showTravelTime")}}>
           Travel time
         </FbfCheckbox>
-        <FbfCheckbox @value={{true}} {{on "click" (fn @toggleSetting "showMinAge")}}>
+        <FbfCheckbox @value={{true}} {{on "click" (fn @toggleSetting "showAge")}}>
           Minimum age
         </FbfCheckbox>
       </div>
@@ -35,7 +34,7 @@
       <div class="rt-settings-panel__setting max-block-width-3">
         <p class="text--h6">Minimum age</p>
         <p class="text--muted">Filter runs where you don't meet the age requirements</p>
-        <FbfTextField @label="Your age" @change={{@filterMinAge}}/>
+        <FbfTextField @label="Your age" @value={{@ageFilter}} @change={{@changeAgeFilter}}/>
       </div>
     </div>
 

@@ -13,7 +13,7 @@
     </div>
     <div class="fbf-layout--flow-right">
       <FbfIcon>search</FbfIcon>
-      <FbfTextField @label="Search" @isCompact={{true}} @value={{this.filter}} @change={{this.changeFilter}} class="margin-right-md"/>
+      <FbfTextField @label="Search" @isCompact={{true}} @value={{this.nameFilter}} @change={{this.changeNameFilter}} class="margin-right-md"/>
       <FbfButton @color="grey" {{on "click" this.toggleSettingsPanel}}>
         <FbfIcon>settings</FbfIcon>
         settings
@@ -26,16 +26,15 @@
 
       @transportMode={{this.transportMode}}
       @changeTransportMode={{this.changeTransportMode}}
-      @filterMinAge={{this.filterMinAge}}
-      @userAge={{this.userAge}}
+      @ageFilter={{this.ageFilter}}
+      @changeAgeFilter={{this.changeAgeFilter}}
     />
     <RunsList
       @model={{this.filteredRuns}}
       @showCompetitions={{this.showCompetitions}}
       @showTravelTime={{this.showTravelTime}}
-      @showMinAge={{this.showMinAge}}
+      @showAge={{this.showAge}}
       @transportMode={{this.transportMode}}
-      @minAgeFilter={{this.minAgeFilter}}
     />
   </div>
 </div>

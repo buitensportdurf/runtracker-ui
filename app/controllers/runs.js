@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { action, computed } from '@ember/object';
 import { debounce } from '@ember/runloop';
-import { isPresent, isEmpty, isNone } from '@ember/utils';
+import { isEmpty, isNone } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 import moment from 'moment';
 
@@ -13,18 +13,20 @@ export default class RunsController extends Controller {
   @tracked showSeason = null;
   @tracked showCompetitions = true;
   @tracked showTravelTime = true;
-  @tracked showMinAge = true;
+  @tracked showAge = true;
 
-  @tracked debouncedFilter = null;
-  @tracked minAgeFilter = null;
+  @tracked ageFilter = null;
+  @tracked debouncedAgeFilter = null;
+  @tracked nameFilter = null;
+  @tracked debouncedNameFilter = null;
   @tracked transportMode = "car";
 
-  @computed('showCanceled', 'showSeason', 'debouncedFilter', 'minAgeFilter', 'model.[]')
+  @computed('showCanceled', 'showSeason', 'debouncedNameFilter', 'ageFilter', 'model.[]')
   get filteredRuns() {
-    let filter = this.debouncedFilter?.trim();
+    let filter = this.debouncedNameFilter?.trim();
     let runs = this.model.filter((run) => {
       let nameFilter = isEmpty(filter) ? true : run.city.toLowerCase().includes(filter) || run.organization.name.toLowerCase().includes(filter);
-      let ageFilter = isEmpty(this.minAgeFilter) ? true : run.minAge >= this.minAgeFilter;
+      let ageFilter = isEmpty(this.ageFilter) ? true : this.ageFilter >= run.age;
       let futureFilter = isNone(this.showSeason) ? run.date > moment() : run.date < moment();
       let notCanceledFilter = this.showCanceled ? true : !run.cancelled;
       return nameFilter && ageFilter && futureFilter && notCanceledFilter;
@@ -42,12 +44,20 @@ export default class RunsController extends Controller {
   }
 
   updateNameFilter = function() {
-    this.debouncedFilter = this.filter;
+    this.debouncedNameFilter = this.nameFilter;
+  }
+  updateAgeFilter = function() {
+    this.debouncedAgeFilter = this.ageFilter;
   }
 
   @action
-  changeFilter() {
+  changeNameFilter() {
     debounce(this, this.updateNameFilter, 200);
+  }
+
+  @action
+  changeAgeFilter() {
+    debounce(this, this.updateAgeFilter, 200);
   }
 
   @action
@@ -58,11 +68,6 @@ export default class RunsController extends Controller {
   @action
   toggleSetting(setting) {
     this[setting] = !this[setting];
-  }
-
-  @action
-  filterMinAge(age) {
-    this.minAgeFilter = age;
   }
 
   @action
