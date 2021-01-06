@@ -8,12 +8,7 @@
   background-size: cover;
   background-position: bottom;
 }
-
 .fbf-layout__center-column {
-  &.rt-runs-page {
-    max-width: 1400px;
-  }
-
   @media(min-width: $desktop-layout-min-width) {
     margin-top: 0vh;
     margin-bottom: 0vh;
@@ -21,6 +16,20 @@
   @media(min-width: $desktop-large-min-width) {
     margin-top: 16vh;
     margin-bottom: 16vh
+  }
+}
+
+.rt-runs-page {
+  max-width: 1400px;
+}
+.rt-runs-page__header {
+  @include fbf-layout--flow-right;
+  @include mq-in-notepad {
+    @include fbf-layout--flow-down;
+    .rt-season-picker {
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 <div class="rt-runs-page fbf-layout__center-column fbf-layout__center-column--margin-vertical">
   <div class="fbf-card--base border-radius-sm content-padding-lg">
-    <div class="fbf-layout--flow-right">
+    <div class="rt-runs-page__header">
       <h1 class="text--h2 text--thin">
         Survivalruns
       </h1>
@@ -36,5 +36,12 @@
       @showAge={{this.showAge}}
       @transportMode={{this.transportMode}}
     />
+    <div class="content-padding-md fbf-layout--flex-center">
+      <SeasonPicker
+        @selectSeason={{this.selectSeason}}
+        @value={{this.showSeason}}
+        @displayValue={{this.seasonDisplay}}
+      />
+    </div>
   </div>
 </div>
