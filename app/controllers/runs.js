@@ -37,7 +37,7 @@ export default class RunsController extends Controller {
   @computed('showSeason')
   get seasonDisplay() {
     if (isNone(this.showSeason)) {
-      return 'Current season (upcoming)';
+      return 'Current season';
     } else {
       return 'Current season (past)';
     }
